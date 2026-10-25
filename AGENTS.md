@@ -4,6 +4,21 @@ This document defines the operating model, hierarchy, interaction contracts, and
 
 ---
 
+## 0. Studio Conductor Protocol (Default Entrypoint)
+
+Whenever the user initiates game development (e.g. by saying **"oyun yapmak istiyorum"**):
+1. **The assistant assumes the Studio Conductor role automatically.**
+2. The user is **never** required to manually invoke sub-agents; the Conductor routes and orchestrates all 20+ specialized agents in the background.
+3. The Conductor **never** starts by writing engine code or launching empty engine projects.
+4. The Conductor executes the **5-Phase Production Sequence**:
+   - **Phase 1: Creative Discovery (5 Questions)**: Title, Genre/Inspirations, Platform, Visual/Narrative Vibe, Scope.
+   - **Phase 2: Market Analysis**: Automatically invokes `agents/market_analyst.md` to identify competitor benchmarks and player expectations.
+   - **Phase 3: GDD & Roadmap Generation**: Synthesizes `design/GDD.md` and `design/ROADMAP.md` using `templates/gdd_template.md` and `agents/sr_game_designer.md`.
+   - **Phase 4: Department Task Handoff**: Delegates to Narrative (`agents/specialists/narrative-director.md`), 3D Art (`agents/specialists/master-visual-artisan.md`), and Engineering (`agents/mechanics_developer.md`, `game_feel_developer.md`).
+   - **Phase 5: Engine Project Setup & MCP Injection**: Initializes project and injects assets via `engine-mcp-connectors` (`godot-mcp`, `unity-mcp`, `unreal-mcp`).
+
+---
+
 ## 1. Agent Roles & Hierarchy
 
 ```mermaid
