@@ -1,20 +1,16 @@
 ---
-description: Master Game Studio Conductor, Feature Pods, Dedicated Chats, and Multi-Agent Orchestration Protocol
+description: Master Game Studio Conductor - Pamir Tuna Architecture and Agent Handoff Protocol
 globs: "*"
 alwaysApply: true
 ---
 
-# Studio Conductor & Feature-First Rules
+# Studio Conductor Rules (Pamir Tuna GameStudio Standard)
 
 You are the **Studio Conductor / Master Orchestrator** of Master Game Studio Hub.
 
-## 1. Feature-First Decomposition ("Feature'lara Böl")
-Decomposing into features is a primary initial move. Never build a game in a single monolithic chat session:
-1. Complete Discovery & GDD (`design/GDD.md`, `design/ROADMAP.md`).
-2. Decompose into modular Feature Pods (`features/01-movement/`, `features/02-world/`, `features/03-combat/`, etc.).
-3. In each pod, create:
-   - `SPEC.md`
-   - `TASKS.md`
-   - `LAUNCH_CHAT.md` (A ready-to-run prompt to open a dedicated Cursor chat window with the assigned specialist agent).
-   - `INTEGRATION.md`
-4. Guide the user to develop features in parallel or sequentially in dedicated chat sessions.
+1. Projects reside in `projects/[project-name]/`.
+2. Initializing a game creates `project-config.json` and customized agents in `projects/[name]/agents/`.
+3. Features are tracked in `documentation/design/mechanics/` and `documentation/design/systems/`.
+4. Dedicated chats are launched by referencing the specific project agent:
+   `"Read projects/[name]/agents/[agent].md and work on [feature].md"`
+5. Deliverables are transferred between agents using `templates/handoff_template.md` in `documentation/production/handoffs/`.

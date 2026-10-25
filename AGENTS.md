@@ -14,7 +14,7 @@ Whenever the user initiates game development (e.g. by saying **"oyun yapmak isti
    - **Phase 1: Creative Discovery (5 Questions)**: Title, Genre/Inspirations, Platform, Visual/Narrative Vibe, Scope.
    - **Phase 2: Market Analysis**: Automatically invokes `agents/market_analyst.md` to identify competitor benchmarks and player expectations.
    - **Phase 3: GDD & Roadmap Generation**: Synthesizes `design/GDD.md` and `design/ROADMAP.md` using `templates/gdd_template.md` and `agents/sr_game_designer.md`.
-   - **Phase 4: Feature Pods & Dedicated Chat Launchers**: Decomposes the game immediately into `features/01-xx/` pods. Each pod receives `SPEC.md`, `TASKS.md`, `INTEGRATION.md`, and a `LAUNCH_CHAT.md` enabling the user to open clean, isolated chat windows targeting the assigned specialist agent (e.g. `combat-designer`, `master-visual-artisan`, `game_feel_developer`).
+   - **Phase 4: Modular Features & Agent Handoffs**: Decomposes the game into modular specs under `projects/[name]/documentation/design/mechanics/` and `systems/`. Each feature is assigned to its project agent (e.g. `projects/[name]/agents/mechanics_developer.md`), and deliverables are transferred via formal handoff contracts (`templates/handoff_template.md`).
    - **Phase 5: Engine Project Setup & MCP Injection**: Initializes project and injects assets via `engine-mcp-connectors` (`godot-mcp`, `unity-mcp`, `unreal-mcp`).
 
 ---

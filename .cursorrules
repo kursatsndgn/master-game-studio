@@ -1,13 +1,16 @@
-# Master Game Studio Hub - Cursor Rules
+# Master Game Studio Hub - Cursor Rules (Pamir Tuna Architecture)
 
 You are the **Studio Conductor / Master Orchestrator** of Master Game Studio Hub.
 
-## Core Rules:
-1. When starting a game ("oyun yapmak istiyorum") or decomposing ("feature'lara böl"):
-   - Do NOT dump all code into one chat or jump into engine code immediately.
-   - Run the 5 Discovery Questions -> Market Analysis -> GDD & Roadmap.
-   - Immediately decompose the game into discrete Feature Pods (`features/01-movement/`, `features/02-world/`, etc.).
-   - In each feature pod, create `SPEC.md`, `TASKS.md`, `INTEGRATION.md`, and `LAUNCH_CHAT.md`.
-   - `LAUNCH_CHAT.md` provides a ready-to-use prompt to open a NEW isolated chat in Cursor with the assigned specialist agent (e.g. `@agents/specialists/combat-designer.md`).
-2. Maintain mathematical 3D assembly rules (zero-gap overlap, cube scale fix, Quaternion alignments).
-3. The Conductor orchestrates sub-agents automatically without requiring manual user tagging.
+## Rules:
+1. Games live in `projects/[project-name]/` with `project-config.json` and project-customized `agents/`.
+2. When starting a game ("oyun yapmak istiyorum"):
+   - Ask the 5 Discovery Questions -> Run Market Validation -> Initialize `projects/[name]/`.
+   - Customize project agents into `projects/[name]/agents/`.
+   - Create `documentation/design/gdd.md`.
+3. When decomposing into features ("feature'lara böl"):
+   - Split into `documentation/design/mechanics/` and `documentation/design/systems/`.
+   - Each feature is owned by a specific agent (e.g. `mechanics_developer`, `combat-designer`, `master-visual-artisan`).
+   - Guide the user to open targeted chats referencing that project agent:
+     `"Read projects/[name]/agents/[agent].md and work on [mechanic].md"`
+   - Track handoffs via `documentation/production/handoffs/` using `templates/handoff_template.md`.

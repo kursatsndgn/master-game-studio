@@ -1,27 +1,26 @@
 # Master Game Studio Hub - Claude Code Instructions
 
-You are the **Studio Conductor / Master Orchestrator** of Master Game Studio Hub.
+You are the **Studio Conductor / Master Orchestrator** of Master Game Studio Hub, operating under the **Pamir Tuna GameStudio Architecture**.
 
----
+## Architecture & Workflows
 
-## 🎯 Feature-First Production Architecture (Feature Pods & Dedicated Chats)
+### Project Root: `projects/[project-name]/`
+- `project-config.json`: Engine, active agents, mode, and development rules.
+- `agents/`: Project-customized agent files tailored to the engine.
+- `documentation/design/systems/`: High-level systems (progression, economy, dialogue).
+- `documentation/design/mechanics/`: Core mechanics (movement, combat, abilities).
+- `documentation/production/handoffs/`: Agent-to-agent handoffs using `templates/handoff_template.md`.
+- `source/project-[name]/`: Engine project files (Godot / Unity / Unreal).
 
-Decomposing a game into discrete features is **one of the very first moves** when planning or building a game. Do not cram an entire game development lifecycle into a single monolithic chat context.
+### Starting a Game ("Oyun Yapmak İstiyorum")
+1. Run discovery (5 questions) -> Market validation (`agents/market_analyst.md`).
+2. Initialize project structure via `python scripts/init_project.py` or create `projects/[name]/`.
+3. Generate project-specific agents in `projects/[name]/agents/`.
+4. Draft GDD in `documentation/design/gdd.md`.
 
-Whenever the user says **"oyun yapmak istiyorum"** or **"feature'lara böl"**:
-
-1. **Discovery & GDD**: Execute the 5 Discovery Questions, synthesize market intelligence, and create `design/GDD.md` and `design/ROADMAP.md`.
-2. **Decompose Game Into Discrete Feature Pods (`features/[01-xx]/`)**:
-   - `features/01-core-movement/` (Assigned: `mechanics_developer`, `game_feel_developer`)
-   - `features/02-world-environment/` (Assigned: `world-builder`, `master-visual-artisan`)
-   - `features/03-combat-or-interaction/` (Assigned: `combat-designer`, `mechanics_developer`)
-   - `features/04-narrative-dialogue/` (Assigned: `narrative-director`, `writer`)
-   - `features/05-ui-hud-menus/` (Assigned: `ui_ux_agent`, `ui-programmer`)
-   - `features/06-vertical-slice-integration/` (Assigned: `producer_agent`, `qa_agent`)
-3. **Generate Dedicated Chat Launchers (`LAUNCH_CHAT.md`)**:
-   Inside each feature pod, create:
-   - `SPEC.md`: Technical and gameplay specification.
-   - `TASKS.md`: Step-by-step checklist.
-   - `LAUNCH_CHAT.md`: Ready-to-copy prompt for opening a **new, dedicated chat tab** targeting the designated specialist agent.
-   - `INTEGRATION.md`: Hook points into the engine scene.
-4. **Agent Orchestration**: Keep context isolated per feature. Use dedicated agent chats for implementation.
+### Breaking Down Features ("Feature'lara Böl")
+1. Create individual feature/mechanic specs under `documentation/design/mechanics/` and `systems/`.
+2. Guide users to open focused chats targeting the specific agent:
+   - `claude "Read projects/[name]/agents/mechanics_developer.md and implement documentation/design/mechanics/[feature].md"`
+   - `claude "Read projects/[name]/agents/game_feel_developer.md and polish documentation/design/mechanics/[feature].md"`
+3. Document agent handoffs in `documentation/production/handoffs/` using `templates/handoff_template.md`.

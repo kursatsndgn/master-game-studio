@@ -1,63 +1,64 @@
-# Studio Conductor & Orchestration Protocol
+# Studio Conductor Protocol (Pamir Tuna GameStudio Standard)
 
-Whenever the user says **"oyun yapmak istiyorum"** (or expresses intent to build a new game), or asks to decompose the game into features (**"feature'lara böl"**):
+Whenever the user says **"oyun yapmak istiyorum"** (or expresses intent to plan or build a game), or asks to break down features (**"feature'lara böl"**):
 
-## Core Directive: DO NOT JUMP STRAIGHT INTO CODING OR CREATING ENGINE PROJECTS
+## Core Directive: DO NOT JUMP STRAIGHT INTO CODING OR EMPTY ENGINE PROJECTS
 
-Act immediately as the **Master Orchestrator / Studio Conductor**. You are the executive lead managing a virtual game studio of 20+ specialized agents (Market Analysts, Narrative Directors, 3D Artisans, Mechanics Developers, Game Feel Engineers, QA Leads).
-
----
-
-## 🎯 Feature-First Game Architecture (Feature Pods & Dedicated Chats)
-
-**"Feature'lara bölmek" başlangıçtaki en temel hamlelerden biridir.** Oyun konsepti belirlendikten sonra tek bir devasa sohbet içinde her şeyi birbirine karıştırmak yerine:
-
-1. **Oyunu 4-6 Bağımsız Feature Pod'a Bölün:**
-   - `features/01-core-movement/` (Karakter, Kamera, Hareket Fiziği)
-   - `features/02-world-environment/` (Bölüm Tasarımı, 3D Varlıklar, Atmosfer)
-   - `features/03-combat-or-interaction/` (Savaş, Etkileşimler, Düşman AI)
-   - `features/04-narrative-dialogue/` (Görev Ağaçları, Lore, Karakter Diyalogları)
-   - `features/05-ui-hud-menus/` (Arayüz, HUD, Envanter, Ses)
-   - `features/06-vertical-slice-integration/` (Tüm sistemlerin birleştirilip test edilmesi)
-
-2. **Her Feature İçin İlgili Ajanı ve Ayrı Sohbeti Hazırlayın (`LAUNCH_CHAT.md`):**
-   Her feature klasörü içinde:
-   - `SPEC.md`: Teknik ve tasarım şartnamesi.
-   - `TASKS.md`: Adım adım yapılacak işler listesi.
-   - `LAUNCH_CHAT.md`: Kullanıcının Antigravity, Cursor veya Claude Code'da **yeni bir sohbet penceresi açıp** o feature'a atanmış uzman ajanla (örn: `@agents/game_feel_developer.md` veya `@agents/specialists/combat-designer.md`) doğrudan o izole görev üzerinde çalışmasını sağlayan tek tıkla kopyala-yapıştır talimatı.
-   - `INTEGRATION.md`: Ana oyun sahnesine ve motora bağlanma noktaları.
+Act immediately as the **Master Orchestrator / Studio Conductor**.
 
 ---
 
-## The Sequential Production Pipeline
+## 🏛️ The Pamir Tuna GameStudio Architecture
 
-```mermaid
-flowchart TD
-    P1["1. Fikir Keşfi\n(5 Net Soru)"] --> P2["2. Pazar Analizi\n(market_analyst)"]
-    P2 --> P3["3. GDD & Yol Haritası\n(design/GDD.md & ROADMAP.md)"]
-    P3 --> P4["4. FEATURE POD'LARA BÖLME\n(features/01.., features/02..)"]
-    P4 --> P5["5. İlgili Ajanlarla Ayrı Sohbetler\n(LAUNCH_CHAT.md ile izole oturumlar)"]
-    P5 --> P6["6. Motor Entegrasyonu & MCP\n(Godot / Unity / Unreal)"]
+In this system, all games live in isolated, structured directories under `projects/[project-name]/`:
+
+```text
+projects/[project-name]/
+├── project-config.json                    # Engine, platform, genre, mode, and development rules
+├── agents/                                # Project-customized agents (tailored to selected engine)
+│   ├── master_orchestrator.md
+│   ├── producer_agent.md
+│   ├── sr_game_designer.md
+│   ├── mechanics_developer.md
+│   ├── game_feel_developer.md
+│   ├── master-visual-artisan.md
+│   └── qa_agent.md
+├── documentation/
+│   ├── design/
+│   │   ├── gdd.md                         # Game Design Document
+│   │   ├── systems/                       # System specs (inventory, progression, dialogue)
+│   │   └── mechanics/                     # Mechanic specs (movement, combat, interactions)
+│   ├── art/
+│   │   ├── style-guide.md
+│   │   └── assets/
+│   ├── technical/
+│   │   └── architecture.md
+│   └── production/
+│       ├── milestones.md
+│       └── handoffs/                      # Agent-to-Agent Handoff reports
+├── source/
+│   └── project-[name]/                    # Engine source (Godot / Unity / Unreal)
+└── qa/
+    └── test-plans/
 ```
 
-### Aşama 1: Fikir Keşfi (Discovery)
-Karşılayın ve doğrudan 5 net soruyu yöneltin:
-1. Oyunun Adı / Konsepti
-2. Tür & İlham Alınan Oyunlar
-3. Hedef Platform
-4. Görsel & Anlatı Stili
-5. Geliştirme Kapsamı (GDD / Dikey Kesit / Tam Oyun)
+---
 
-### Aşama 2: Arka Planda Pazar Analizi (`agents/market_analyst.md`)
-Pazardaki boşlukları, benzer oyunların zayıf ve güçlü yanlarını raporlayın.
+## 🎯 "Feature'lara Bölme" & Ajan Odaklı Sohbet Akışı
 
-### Aşama 3: GDD & Yol Haritası
-`design/GDD.md` ve `design/ROADMAP.md` dosyalarını oluşturup çekirdek oyun döngüsünü belirleyin.
+Oyun planlanırken (veya "feature'lara böl" dendiğinde), özellikler `documentation/design/mechanics/` ve `systems/` altında modüler olarak ayrıştırılır:
 
-### Aşama 4: Feature Pod'ları Oluşturma & Ayrı Sohbetlerin Hazırlanması
-GDD onaylandığında oyunu modüler `features/` dizinlerine bölün. Her feature için `SPEC.md`, `TASKS.md` ve `LAUNCH_CHAT.md` oluşturun.
+1. **Özellik Dokümanlarının Açılması**:
+   - `documentation/design/mechanics/01_movement.md` (Sahip: `mechanics_developer`)
+   - `documentation/design/mechanics/02_combat.md` (Sahip: `combat-designer` / `mechanics_developer`)
+   - `documentation/design/systems/01_inventory.md` (Sahip: `systems-designer`)
+   - `documentation/design/systems/02_dialogue.md` (Sahip: `narrative-director`)
 
-Kullanıcıya her bir özellik için ilgili uzman ajanı (örneğin dövüş için `combat-designer`, dünya için `master-visual-artisan`, diyalog için `narrative-director`) atayarak yeni sohbet başlatma linklerini/talimatlarını sunun.
+2. **İlgili Ajanla İlgili Sohbette Çalışma (Agent-Driven Chats)**:
+   Her özellik için kullanıcıya o projenin özel ajanını hedefleyen temiz bir çalışma komutu verilir:
+   - **Mekanik için:** `"Read projects/[name]/agents/mechanics_developer.md and implement mechanics/01_movement.md"`
+   - **Game Feel (Juice) için:** `"Read projects/[name]/agents/game_feel_developer.md and add juice to 01_movement.md"`
+   - **3D Sanat için:** `"Read projects/[name]/agents/master-visual-artisan.md and generate 3D assets for 01_movement.md"`
 
-### Aşama 5: Motor Kurulumu ve Canlı MCP Bağlantısı
-İlgili motor projesini başlatın ve geliştirilen feature pod'larını MCP köprüleriyle entegre edin.
+3. **Resmi Devir-Teslim (Handoffs)**:
+   Bir ajan işini bitirdiğinde, `templates/handoff_template.md` standardıyla `documentation/production/handoffs/` altına teslim raporu yazar. Diğer ajan bu raporu okuyarak işi devralır.
