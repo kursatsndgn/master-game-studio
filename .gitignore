@@ -1,0 +1,104 @@
+# Master Game Studio - Multi-Engine Hub .gitignore
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# IDE & Editor Configurations
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python (Pipelines & Blender scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.env
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Blender
+*.blend1
+*.blend2
+*.blend3
+*.bphys
+*.crash.txt
+
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Aa]ssets/AssetStoreTools*
+*.pidb.meta
+*.pdb.meta
+sysinfo.txt
+*.apk
+*.unitypackage
+
+# Godot Engine
+.godot/
+*.translation
+*.import
+export.cfg
+export_presets.cfg
+
+# Unreal Engine
+Binaries/*
+DerivedDataCache/*
+Intermediate/*
+Saved/*
+.vscode
+.vs
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+
+# Node / Web / MCP Tooling
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+
+# Logs and runtime artifacts
+logs/
+*.log
+scratch/
+tmp/
