@@ -1,5 +1,6 @@
 # Master Game Studio Hub 🎮🚀
 
+[![Multi-Assistant Ready](https://img.shields.io/badge/Compatibility-Antigravity%20%7C%20Claude%20%7C%20Cursor%20%7C%20Codex-blue?style=for-the-badge)](#multi-assistant-support)
 [![Architecture](https://img.shields.io/badge/Architecture-Studio%20Agents%20%2B%20MCP-blueviolet?style=for-the-badge)](#architecture)
 [![MCP Powered](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-emerald?style=for-the-badge)](#engine-mcp-connectors)
 [![Blender Powerhouse](https://img.shields.io/badge/Blender-80%2B%20Styles%20%7C%20Assembly-orange?style=for-the-badge)](#blender-visual-production)
@@ -183,6 +184,35 @@ master-game-studio/
 # In Antigravity Chat:
 "Use @godot-mcp to inspect the active scene tree and place the newly generated rowboat at coordinates (0, 0, 0)."
 ```
+
+---
+
+## 🤖 Universal AI Assistant Support
+
+Master Game Studio Hub is universally compatible across modern AI coding environments out of the box:
+
+| AI Environment | Instruction Files Loaded | Features Supported |
+| :--- | :--- | :--- |
+| **Antigravity** | `GEMINI.md`, `AGENTS.md`, `.agents/rules/*.md` | Automatic Studio Conductor, MCP Bridges, Progressive Skills. |
+| **Claude Code** | `CLAUDE.md`, `.claude/` | Full terminal execution, sub-agent spawning, automated tool loops. |
+| **Cursor IDE** | `.cursorrules`, `.cursor/rules/*.mdc` | Semantic rule loading, inline feature generation, live diagnostics. |
+| **OpenAI Codex / Copilot** | `CODEX.md` | Contextual system prompts, multi-agent delegation. |
+
+---
+
+## ⚡ Feature Addition & Decomposition Pipeline
+
+Whenever you or your team want to implement a new feature (e.g. inventory, boss battle, procedural dungeons):
+1. **Request the feature naturally**: *"Let's add a stamina-based dodge roll mechanic"* or *"Envanter sistemi kuralım"*.
+2. **Conductor Analyzes & Generates**: Writes `features/[feature_name]/SPEC.md` using [`templates/feature_spec_template.md`](templates/feature_spec_template.md).
+3. **Automatic Multi-Agent Decomposition**:
+   - **Game Design**: Mechanics rules, state transitions, balancing formulas.
+   - **Narrative**: Story justification, quest connections, lore tags.
+   - **3D Art**: Asset briefs, LODs, UCX collision via `@blender-master-artisan`.
+   - **Engineering**: Code architecture via `@mechanics_developer`.
+   - **Game Feel**: Camera shake, audio, hit-stop juice via `@game_feel_developer`.
+   - **QA**: Acceptance criteria (Must/Should/Could have) via `@qa_agent`.
+4. **Phased Implementation**: The Conductor executes and commits each step cleanly.
 
 ---
 
